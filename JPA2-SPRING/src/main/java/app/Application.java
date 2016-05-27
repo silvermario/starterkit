@@ -8,9 +8,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import main.java.exceptions.NonexistentEntityException;
 import main.java.model.Pracownik;
 import main.java.model.PracownikHasProjekt;
+import main.java.services.PracownikServices.CreatePracownik;
+import main.java.dao.PracownikDao;
 //import main.java.services.PracownikServices.CreatePracownik;
 import main.java.dao.impl.PracownikDaoImpl;
 
@@ -35,10 +39,24 @@ public class Application {
         Pracownik pierwszy = em.find(Pracownik.class, 1);
         pierwszy.getPracownikHasProjekts().toString();*/
         
-        //new CreatePracownik( new Date(90, 1,1) , "Jacek", "Kokot", "82020253367", 55);	
+        CreatePracownik pracownik = new CreatePracownik( new Date(90, 1,1) , "Jacek", "Kokot", "82020253367", 55);	
         
-		PracownikDaoImpl pracownikDaoImpl = new PracownikDaoImpl();
-		System.out.println(pracownikDaoImpl.findAll());
+		/*ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("main/java/resources/spring/applicationContext.xml");
+		
+		PracownikDao pracownikDao = ctx.getBean("pracownikDao", PracownikDao.class);
+		
+		List<Pracownik> janek = pracownikDao.findPracownikByName("Szydełko");
+		Pracownik janek1 = janek.get(0);
+		
+		System.out.println(janek1.getNazwisko());
+		
+		janek1.setNazwisko("Szydło");
+		
+		pracownikDao.update(janek1);*/
+		
+		
+/*		PracownikDao pracownikDaoImpl = new PracownikDaoImpl();
+		System.out.println(pracownikDaoImpl.findAll());*/
         
 		
 	}
