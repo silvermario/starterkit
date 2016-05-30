@@ -33,9 +33,9 @@ public class ProjektServiceImpl implements ProjektService {
 	}
 
 	@Override
-	public void removePracownikFromProjekt(PracownikHasProjekt pracownikHasProjekt) {
+	public PracownikHasProjekt removePracownikFromProjekt(PracownikHasProjekt pracownikHasProjekt) {
 		pracownikHasProjekt.setDataZakonczenia(new Date());
-		pracownikHasProjektRepository.save(pracownikHasProjekt);
+		return pracownikHasProjektRepository.save(pracownikHasProjekt);
 	}
 
 }

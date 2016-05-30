@@ -9,6 +9,6 @@ public interface ProjektService {
 	
 	public PracownikHasProjekt addPracownikToProjekt(PracownikHasProjekt pracownikHasProjekt);
 	
-	public void removePracownikFromProjekt(PracownikHasProjekt pracownikHasProjekt);
+	public PracownikHasProjekt removePracownikFromProjekt(PracownikHasProjekt pracownikHasProjekt);
 
 }

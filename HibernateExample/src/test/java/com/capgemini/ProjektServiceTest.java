@@ -80,7 +80,8 @@ public class ProjektServiceTest {
 		// then
 		List<PracownikHasProjekt> listOfProjectsPracownikCurrentlyWorksAfterRemoval = pracownikHasProjektRepository.findProjectsInWhichPracownikIsCurrentlyWorking(pracownik.getIdPracownik());
 		int countAfterRemoval = listOfProjectsPracownikCurrentlyWorksAfterRemoval .size();
-		assertEquals((countBeforeRemoval - 1), countAfterRemoval);
+		assertEquals(2, countBeforeRemoval);
+		assertEquals(1, countAfterRemoval);
 	}
 	
 
