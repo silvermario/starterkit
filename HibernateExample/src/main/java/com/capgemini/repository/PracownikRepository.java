@@ -18,6 +18,9 @@ public interface PracownikRepository extends JpaRepository<Pracownik, Integer> {
 	@Query("select p from Pracownik p where p.idPracownik like :idPracownik")
 	Pracownik findPracownikById(@Param("idPracownik") Integer idPracownik);
 	
+	@Query("select p from Pracownik p where p.nazwisko like :nazwisko")
+	List<Pracownik> findPracownikByNazwisko(@Param("nazwisko") String nazwisko);
+	
 	@Override
 	@Query("select p from Pracownik p")
 	List<Pracownik> findAll();

@@ -2,8 +2,7 @@ package com.capgemini.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -19,17 +18,19 @@ public class PracownikHasProjekt implements Serializable {
 	@Id
 	@Column(name="id_pracownik_do_projektu")
 	private int idPracownikDoProjektu;
-
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_rozpoczecia")
-	private Timestamp dataRozpoczecia;
-
+	private Date dataRozpoczecia;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="data_zakonczenia")
-	private Timestamp dataZakonczenia;
+	private Date dataZakonczenia;
 
 	private String rola;
 
 	@Column(name="stawka_dzienna")
-	private BigDecimal stawkaDzienna;
+	private Double stawkaDzienna;
 
 	//bi-directional many-to-one association to Pracownik
 	@ManyToOne
@@ -50,19 +51,19 @@ public class PracownikHasProjekt implements Serializable {
 		this.idPracownikDoProjektu = idPracownikDoProjektu;
 	}
 
-	public Timestamp getDataRozpoczecia() {
+	public Date getDataRozpoczecia() {
 		return this.dataRozpoczecia;
 	}
 
-	public void setDataRozpoczecia(Timestamp dataRozpoczecia) {
+	public void setDataRozpoczecia(Date dataRozpoczecia) {
 		this.dataRozpoczecia = dataRozpoczecia;
 	}
 
-	public Timestamp getDataZakonczenia() {
+	public Date getDataZakonczenia() {
 		return this.dataZakonczenia;
 	}
 
-	public void setDataZakonczenia(Timestamp dataZakonczenia) {
+	public void setDataZakonczenia(Date dataZakonczenia) {
 		this.dataZakonczenia = dataZakonczenia;
 	}
 
@@ -74,11 +75,11 @@ public class PracownikHasProjekt implements Serializable {
 		this.rola = rola;
 	}
 
-	public BigDecimal getStawkaDzienna() {
+	public Double getStawkaDzienna() {
 		return this.stawkaDzienna;
 	}
 
-	public void setStawkaDzienna(BigDecimal stawkaDzienna) {
+	public void setStawkaDzienna(Double stawkaDzienna) {
 		this.stawkaDzienna = stawkaDzienna;
 	}
 

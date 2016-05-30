@@ -1,0 +1,50 @@
+Copy of JPA2-SPRING
+# JPA2-SPRING
+JPA2
+JPA-2
+libraries
+TestProject
+GameOfLive-2_bak
+# GameOfLive-2/
+CSVApp
+1
+GameOfLife3
+GameOfLifeTest
+GameOfLife
+javaExercises
+# BowlingGame
+org.eclipse.ui.examples.javaeditor
+RemoteSystemsTempFiles
+
+!/.gitignore
+
+*target*
+*.jar
+*.war
+*.ear
+*.class
+
+# eclipse specific git ignore
+*.pydevproject
+#.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+#.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+.recommenders/
+.recommenders/*
+.recommenders

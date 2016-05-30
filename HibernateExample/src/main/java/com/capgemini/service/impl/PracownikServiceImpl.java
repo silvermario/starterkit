@@ -11,8 +11,8 @@ import com.capgemini.repository.PracownikRepository;
 import com.capgemini.service.PracownikService;
 
 
-@Service
 @Transactional
+@Service("pracownikService")
 public class PracownikServiceImpl implements PracownikService {
 
 	@Autowired
@@ -22,7 +22,14 @@ public class PracownikServiceImpl implements PracownikService {
 	public Pracownik findPracownikById(Integer id) {
 
 		return pracownikRepository.findPracownikById(id);
+	}	
+
+	@Override
+	public List<Pracownik> findPracownikByNazwisko(String nazwisko) {
+		
+		return pracownikRepository.findPracownikByNazwisko(nazwisko);
 	}
+	
 
 	@Override
 	public List<Pracownik> findAll() {
@@ -31,21 +38,18 @@ public class PracownikServiceImpl implements PracownikService {
 	}
 
 	@Override
-	public Pracownik addPracownik() {
-		// TODO Auto-generated method stub
-		return null;
+	public Pracownik addPracownik(Pracownik pracownik) {
+		pracownikRepository.save(pracownik);
+		return pracownik;
 	}
+	
 
 	@Override
-	public void updatePracownik(Pracownik pracownik, String nazwisko) {
-
-		//Pracownik pracownikToUpdate = pracownikRepository.;
-		//pracownikToUpdate.setNazwisko(pracownik.getNazwisko());
-		pracownik.setNazwisko("xxxxxxxx");
+	public Pracownik updatePracownik(Pracownik pracownik) {
+		//Pracownik pracownikToUpdate = pracownikRepository.findPracownikById(id);
 		pracownikRepository.save(pracownik);
-		
+		return pracownik;		
 	}
-	
-	
+
 
 }

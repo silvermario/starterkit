@@ -18,8 +18,8 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:annotation-config />
-	<context:component-scan base-package="com.capgemini" />	
+	<!-- <context:annotation-config /> -->
+	<context:component-scan base-package="com.capgemini" />
 
 	<jpa:repositories base-package="com.capgemini.repository" />
 
@@ -29,13 +29,11 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<!-- <util:properties id="hsqldbJpaProps" location="classpath:/test_data_access/hsqldb_jpa.properties" 
-		/> <jdbc:embedded-database id="dataSource" type="HSQL" /> -->
-
 	<bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/organizacja_second" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/organizacja_second" />
 		<property name="username" value="root" />
 		<property name="password" value="password" />
 	</bean>
@@ -58,17 +56,9 @@
 		</property>
 
 	</bean>
-	<!-- Configure Employee Bean and initialize it -->
-	
-
 
 	<!-- Configure EmployeeService bean -->
-	<bean name="pracownikService" class="com.capgemini.service.impl.PracownikServiceImpl">
-		<!-- <property name="employee" ref="pracownik"></property> -->
-	</bean>
-	
-	
-	
-
+	<!-- <bean name="pracownikService" class="com.capgemini.service.impl.PracownikServiceImpl"> 
+		<property name="employee" ref="pracownik"></property> </bean> -->
 
 </beans>

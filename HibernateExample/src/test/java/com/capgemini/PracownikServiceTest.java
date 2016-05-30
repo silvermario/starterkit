@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,10 +21,11 @@ import com.capgemini.model.Projekt;
 import com.capgemini.repository.PracownikRepository;
 import com.capgemini.model.PracownikHasProjekt;
 import com.capgemini.service.PracownikService;
+import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "application-context-test.xml")
-//@Sql( "/DML-script.sql" )
+@ContextConfiguration(locations = "classpath:Spring/applicationContext.xml")
+@Sql( "/DML-script.sql" )
 public class PracownikServiceTest {
 
 	@Autowired
@@ -33,41 +35,42 @@ public class PracownikServiceTest {
 	private PracownikRepository pracownikRepository; 
 
 	@Test
-	@Ignore
 	public void testShouldFindPracownik() {
 		// given
-		//List<Pracownik> empList = pracownikService.findPracownikById(1);
-		List<Pracownik> empList = pracownikService.findPracownikById(1);
+		Pracownik pracownik = pracownikService.findPracownikById(1);
 		// when
-		int numberOfEmp = empList.size();
+		String nazwisko = pracownik.getNazwisko();
 		// then
-		assertEquals(1, numberOfEmp);
+		assertEquals("Kowalski", nazwisko);
 	}
 	
 	@Test
 	public void testShouldUpdatePracownik() {
 		// given
-		Integer id = 1;
-		Pracownik pracownikKowalski =  pracownikService.findPracownikById(1);
+		Integer id = 2;
+		Pracownik pracownikKowalski =  pracownikService.findPracownikById(id);
 		// when
-		//System.out.println(pracownikKowalski.getNazwisko());
-		pracownikKowalski.setNazwisko("XXXXX");
-		pracownikKowalski.setImie("Stefan");
-		pracownikKowalski.setPesel("99999909999");
-		//System.out.println(pracownikKowalski.getNazwisko());
-		//pracownikService.updatePracownik(pracownikKowalski, "Nowakowski");
-		pracownikRepository.save(pracownikKowalski);
+		pracownikKowalski.setNazwisko("Nowaks");
+		pracownikService.updatePracownik(pracownikKowalski);
 		// then
-		assertEquals("XXXXX", pracownikRepository.getOne(id).getNazwisko());		
+		assertEquals("Nowaks", pracownikRepository.getOne(id).getNazwisko());		
 	}
 	
 	@Test
-	public void shouldAddPracownik() {
+	public void testShouldAddPracownik() {
+		//given
 		Pracownik pracownik = new Pracownik();
-		pracownik.setImie("Jurek");
-		pracownik.setDataUrodzenia(new Date());
-		pracownik.setNazwisko("Ogórek");
-		pracownik.setPesel("82020203345");
-		pracownikRepository.save(pracownik);
+		Date date = new Date();
+		String imie = "Marek";
+		String nazwisko = "Jurek";
+		String pesel = "12345678910";		
+		// when
+		pracownik.setImie(imie);
+		pracownik.setNazwisko(nazwisko);
+		pracownik.setDataUrodzenia(date);
+		pracownik.setPesel(pesel);
+		pracownikService.addPracownik(pracownik);
+		// then
+		assertEquals("Jurek",	pracownikRepository.findPracownikByNazwisko(nazwisko).get(0).getNazwisko());
 	}
 }

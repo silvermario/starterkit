@@ -8,12 +8,14 @@ import com.capgemini.model.Pracownik;
 public interface PracownikService {
 	
 	public Pracownik findPracownikById(Integer id_pracownik);
+
+	public List<Pracownik> findPracownikByNazwisko(String nazwisko);
 	
 	public List<Pracownik> findAll();
 	
-	public Pracownik addPracownik();
+	public Pracownik addPracownik(Pracownik pracownik);
 	
-	public void updatePracownik(Pracownik pracownik, String nazwisko);
+	public Pracownik updatePracownik(Pracownik pracownik);
 	
 
 }
