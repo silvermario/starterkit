@@ -1,14 +1,14 @@
 package main.java.dao.impl;
 
 import main.java.dao.Dao;
-import main.java.model.Pracownik;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.transaction.Transactional;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;

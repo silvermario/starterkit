@@ -1,5 +1,6 @@
 package pl.spring.demo.repository;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class BookRepositoryTest {
 
     @Autowired
     private BookRepository bookRepository;
-
+    
     @Test
     public void testShouldFindBookById() {
         // given
@@ -66,4 +67,5 @@ public class BookRepositoryTest {
         assertFalse(booksEntity.isEmpty());
         assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
     }
+    
 }

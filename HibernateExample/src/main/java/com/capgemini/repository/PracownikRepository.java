@@ -29,5 +29,4 @@ public interface PracownikRepository extends JpaRepository<Pracownik, Integer> {
 	@Query("select p from Pracownik p where p.idPracownik like :idPracownik")
 	Pracownik getOne(@Param("idPracownik") Integer idPracownik);
 	
-	
 }
