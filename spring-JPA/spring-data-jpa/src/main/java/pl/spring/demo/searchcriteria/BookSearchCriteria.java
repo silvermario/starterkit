@@ -7,6 +7,11 @@ public class BookSearchCriteria {
 	private String author;
 	private String libraryName;
 
+	public BookSearchCriteria(){
+		
+	}
+	
+
 	public BookSearchCriteria(String title, String author, String libraryName) {
 		this.title = title;
 		this.author = author;
